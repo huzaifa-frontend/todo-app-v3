@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f5;
+            font-family: Arial, sans-serif;
+        }
+        .todosContainer {
+            width: 400px;
+            background-color: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .inputContainer {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        #inp {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        #addButton {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            transition: background 0.3s;
+        }
+        #addButton:hover {
+            background-color: #45a049;
+        }
+        .todo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #e7f3e7;
+            border-radius: 5px;
+            font-size: 16px;
+            border: 1px solid #d0e0d0;
+        }
+        .todo p {
+            margin: 0;
+            flex: 1;
+        }
+        .todo button {
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 3px;
+            margin-left: 5px;
+            transition: background 0.3s;
+        }
+        .deleteBtn {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        .deleteBtn:hover {
+            background-color: #c0392b;
+        }
+        .updateBtn {
+            background-color: #3498db;
+            color: #fff;
+        }
+        .updateBtn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="todosContainer">
+        <div class="inputContainer">
+            <input id="inp" type="text" placeholder="Add a new todo" />
+            <button id="addButton" onclick="addTodo()">Add Todo</button>
+        </div>
+        <div id="todos"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
