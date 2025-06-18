@@ -1,78 +1,209 @@
-  body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f0f5;
-            font-family: Arial, sans-serif;
-        }
-        .todosContainer {
-            width: 400px;
-            background-color: #f9f9f9;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .inputContainer {
-            display: flex;
-            margin-bottom: 15px;
-        }
-        #inp {
-            flex: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px 0 0 5px;
-        }
-        #addButton {
-            padding: 10px 15px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            background-color: #4CAF50;
-            color: #fff;
-            border-radius: 0 5px 5px 0;
-            transition: background 0.3s;
-        }
-        #addButton:hover {
-            background-color: #45a049;
-        }
-        .todo {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #e7f3e7;
-            border-radius: 5px;
-            font-size: 16px;
-            border: 1px solid #d0e0d0;
-        }
-        .todo p {
-            margin: 0;
-            flex: 1;
-        }
-        .todo button {
-            padding: 5px 10px;
-            font-size: 14px;
-            cursor: pointer;
-            border: none;
-            border-radius: 3px;
-            margin-left: 5px;
-            transition: background 0.3s;
-        }
-        .deleteBtn {
-            background-color: #e74c3c;
-            color: #fff;
-        }
-        .deleteBtn:hover {
-            background-color: #c0392b;
-        }
-        .updateBtn {
-            background-color: #3498db;
-            color: #fff;
-        }
-        .updateBtn:hover {
-            background-color: #2980b9;
-        }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.todosContainer {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.todosContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.inputContainer {
+    display: flex;
+    margin-bottom: 25px;
+    gap: 0;
+}
+
+#inp {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px 0 0 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    border-right: none;
+}
+
+#inp::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#inp:focus {
+    border-color: #4ecdc4;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+}
+
+#addButton {
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid #4ecdc4;
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+    border-radius: 0 12px 12px 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#addButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+#addButton:hover::before {
+    left: 100%;
+}
+
+#addButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(78, 205, 196, 0.3);
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    margin: 12px 0;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+.todo:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.todo::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #ff6b6b, #4ecdc4);
+    border-radius: 0 15px 15px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.todo:hover::before {
+    opacity: 1;
+}
+
+.todo p {
+    margin: 0;
+    flex: 1;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.todo button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.deleteBtn {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.deleteBtn:hover {
+    background: linear-gradient(135deg, #ff5252, #e53935);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.updateBtn {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d);
+    color: white;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.updateBtn:hover {
+    background: linear-gradient(135deg, #26d0ce, #2bb7bb);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .todosContainer {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    #inp, #addButton {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .todo {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .todo button {
+        align-self: flex-end;
+    }
+}
