@@ -57,5 +57,4 @@ function render() {
     });
 }
 
-// Initial render
 render();
